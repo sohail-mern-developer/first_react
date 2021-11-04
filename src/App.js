@@ -1,14 +1,23 @@
 import './App.css'
-import { useState } from 'react';
-import Count from './Count';
-import Todo from './Todo';
+import { useState, useEffect } from 'react';
+// import * as Components from './Components'
+import { PropsDemo } from './Components'
 
 
 const App = () => {
 
+ // console.log('Components', Components);
+  
   const [key, setKey] = useState('')
   const [value, setValue] = useState('')
+  const [message, setMessage] = useState('my name is sohailmy name is sohailmy name is sohailmy name is sohailmy name is sohailmy name is sohailmy name is sohailmy name is sohailmy name is sohailmy name is sohailmy name is sohailmy name is sohailmy name is sohailmy name is sohail')
+  const [apiCallsCount, setApiCalls] = useState(1)
 
+  useEffect(() => {
+    setInterval(() => {
+      setApiCalls(apiCallsCount + 1)
+    }, 2000);
+  }, [])
 
   const [obj, setObj] =useState({ })
 
@@ -25,8 +34,8 @@ const App = () => {
 
   return (
     <div>
-      <Todo />
-      {/* <Count />  */}
+      {/* <Todo /> */}
+      <PropsDemo message={message} apiCallsCount={apiCallsCount} /> 
       {/* <div>
         <input name='key' value={key} onChange={e => setKey(e.target.value.replace(' ', '_'))} placeholder='Please enter key here!' />
         <input name='value' value={value} onChange={e => setValue(e.target.value)} placeholder='Please enter value here!' />
